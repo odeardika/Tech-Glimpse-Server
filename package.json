@@ -1,7 +1,8 @@
 {
   "name": "tech-glimpse-server",
   "scripts": {
-    "dev": "bun run --hot src/index.ts"
+    "start": "vercel dev",
+    "deploy": "vercel"
   },
   "dependencies": {
     "axios": "^1.9.0",
@@ -9,6 +10,6 @@
     "hono": "^4.7.9"
   },
   "devDependencies": {
-    "@types/bun": "latest"
+    "vercel": "^32.4.1"
   }
 }
