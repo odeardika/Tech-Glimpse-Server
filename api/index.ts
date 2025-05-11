@@ -6,7 +6,7 @@ export const config = {
   runtime: 'edge'
 }
 
-const app = new Hono().basePath('/api')
+const app = new Hono().basePath('')
 
 app.get('/', (c) => {
   return c.body('<h1>Tech Glimpse Server Running</h1>')
