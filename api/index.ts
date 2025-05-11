@@ -1,4 +1,5 @@
 import { Hono } from 'hono';
+import { cors } from 'hono/cors';
 import { handle } from 'hono/vercel';
 import { getNews } from '../module/getNews';
 
@@ -7,6 +8,8 @@ export const config = {
 }
 
 const app = new Hono().basePath('')
+
+app.use(cors())
 
 app.get('/', (c) => {
   return c.body('<h1>Tech Glimpse Server Running</h1>')
