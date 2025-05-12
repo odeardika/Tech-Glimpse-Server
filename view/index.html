@@ -1,19 +1,4 @@
-import { Hono } from 'hono';
-import { cors } from 'hono/cors';
-import { handle } from 'hono/vercel';
-import { getNews } from '../module/getNews';
-
-export const config = {
-  runtime: 'edge'
-}
-
-const app = new Hono().basePath('')
-
-app.use(cors())
-
-app.get('/', c => {
-  return c.html(`
-    <!doctype html>
+<!doctype html>
 <html>
   <head>
     <title>Tech Glimpse API</title>
@@ -290,16 +275,3 @@ font-style: italic;
   </div>
   </body>
 </html>
-    `
-    
-  )
-})
-
-app.get('/news', async (c) => {
-  const news = await getNews();
-  
-  return c.json(news)
-})
-
-
-export default handle(app)

@@ -1,0 +1,39 @@
+openapi: 3.1.0
+info:
+  title: Tech Glimpse API
+  contact:
+    email: dirfanardika@gmail.com
+  version: 1.0.0
+servers:
+  - url: https://tech-glimpse-server.vercel.app/
+paths:
+  /news:
+    get:
+      summary: Returns a list of news.
+      responses:
+        "200": # status code
+          description: A JSON array of news
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    title:
+                      type: string
+                    url:
+                      type: string
+                    description:
+                      type: string
+                      nullable: true
+                      description: Can be any value, including `null`
+                    image:
+                      type: string
+                      nullable: true
+                      description: Can be any value, including `null`
+                    favicon:
+                      nullable: true
+                      description: Can be any value, including `null`
