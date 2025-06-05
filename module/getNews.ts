@@ -16,8 +16,10 @@ async function getNewsMetadata(url: string) {
         // get meta data
         const title = $('meta[property="og:title"]').attr('content');
         const description = $('meta[property="og:description"]').attr('content');
-        const image = $('meta[property="og:image"]').attr('content'); 
+        const tempImage = $('meta[property="og:image"]').attr('content'); 
         const favicon = $('link[rel="shortcut icon"]').attr('href');
+
+        const image = tempImage ? (tempImage.startsWith('http') ? tempImage : new URL(tempImage, url).href) : null;
 
         return { 
             title, 
