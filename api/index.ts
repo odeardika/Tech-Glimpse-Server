@@ -3,6 +3,8 @@ import { cors } from 'hono/cors';
 import { handle } from 'hono/vercel';
 import { getNews } from '../module/getNews';
 import homeView from '../view/homeView';
+import sendEmail from '../module/sendEmail';
+import { getEmail } from '../module/sendEmail';
 
 export const config = {
   runtime: 'edge'
@@ -17,8 +19,10 @@ app.get('/', homeView)
 app.get('/news', async (c) => {
   const news = await getNews();
   
-  return c.json(news)
+  return c.json(news);
 })
+
+app.get('/email', getEmail);
 
 
 export default handle(app)
